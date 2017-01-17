@@ -16,12 +16,12 @@ def main():
 	except:
 		logger.error('Could not find AlchemyNews env variables')
 	alchemy_data_news = AlchemyDataNewsV1(api_key=alchemy_api)
-	results = alchemy_data_news.get_news_documents(start='now-7d', end='now', time_slice='12h')
-	print(json.dumps(results, indent=2))
+	#results = alchemy_data_news.get_news_documents(start='now-7d', end='now', time_slice='12h')
+	#print(json.dumps(results, indent=2))
 
 
 	results = alchemy_data_news.get_news_documents(
-	    start='now-2d',
+	    start='now-3h',
 	    end='now',
 	    return_fields=['enriched.url.title',
 	                   'enriched.url.url',
@@ -29,7 +29,7 @@ def main():
 	                   'enriched.url.publicationDate'],
 	    query_fields={
 	        'q.enriched.url.enrichedTitle.entities.entity':
-	            '|text=Tesla,type=company|'})
+	            '|text=Trump|'})
 	print(json.dumps(results, indent=2))
 
 
